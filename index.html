@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Seguridad & Electricidad</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #0f172a;
+    color: white;
+}
+
+header {
+    background: #020617;
+    padding: 30px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    color: #22c55e;
+}
+
+nav {
+    background: #020617;
+    text-align: center;
+    padding: 10px;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+section {
+    padding: 50px;
+}
+
+.servicios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 10px;
+    flex: 1;
+    min-width: 250px;
+}
+
+.card h3 {
+    color: #22c55e;
+}
+
+footer {
+    background: #020617;
+    text-align: center;
+    padding: 20px;
+}
+
+/* BOTÓN WHATSAPP */
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    font-size: 30px;
+    padding: 15px;
+    border-radius: 50%;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* BOTÓN CONTACTO */
+.boton {
+    display: inline-block;
+    background: #22c55e;
+    padding: 15px 25px;
+    color: black;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>SEGURIDAD & ELECTRICIDAD</h1>
+    <p>Control de Acceso | CCTV | Instalaciones Eléctricas</p>
+</header>
+
+<nav>
+    <a href="#servicios">Servicios</a>
+    <a href="#contacto">Cotizar</a>
+</nav>
+
+<section id="servicios">
+    <h2>Servicios</h2>
+
+    <div class="servicios">
+        <div class="card">
+            <h3>🔐 Control de Acceso</h3>
+            <p>Instalación de lectores, botones, retenedores y controladoras.</p>
+        </div>
+
+        <div class="card">
+            <h3>📷 CCTV</h3>
+            <p>Instalación de cámaras, DVR/NVR y monitoreo remoto.</p>
+        </div>
+
+        <div class="card">
+            <h3>⚡ Electricidad</h3>
+            <p>Instalaciones eléctricas, cableado estructurado y mantención.</p>
+        </div>
+    </div>
+</section>
+
+<section id="contacto">
+    <h2>Solicitar Cotización</h2>
+
+    <p>📱 WhatsApp: 
+        <a href="https://wa.me/569XXXXXXXX" class="boton">
+            Enviar mensaje
+        </a>
+    </p>
+
+    <p>📞 Teléfono: +56 9 XXXX XXXX</p>
+
+    <p>📧 Correo: contacto@tuempresa.cl</p>
+</section>
+
+<footer>
+    <p>© 2026 Seguridad & Electricidad</p>
+</footer>
+
+<!-- BOTÓN FLOTANTE WHATSAPP -->
+<a href="https://wa.me/569XXXXXXXX" class="whatsapp">
+    💬
+</a>
+
+</body>
+</html>
