@@ -29,17 +29,6 @@ body {
   overflow-x: hidden;
 }
 
-/* ─── NOISE OVERLAY ─── */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.4;
-}
-
 /* ─── SCROLLBAR ─── */
 ::-webkit-scrollbar { width:5px; }
 ::-webkit-scrollbar-track { background:var(--bg); }
@@ -272,4 +261,1213 @@ HERO
   inset: 0;
   background-image:
     linear-gradient(rgba(0,255,136,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,255,136,0.04) 1px, transparent 1
+    linear-gradient(90deg, rgba(0,255,136,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 0%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 0%, transparent 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 860px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--primary-dim);
+  border: 1px solid var(--border);
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 7px 18px;
+  border-radius: 50px;
+  margin-bottom: 30px;
+  animation: fadeUp 0.6s ease both;
+}
+.badge-dot {
+  width: 6px; height: 6px;
+  background: var(--primary);
+  border-radius: 50%;
+  animation: blink 1.5s infinite;
+}
+
+.hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 25px;
+  animation: fadeUp 0.6s ease 0.1s both;
+}
+
+.hero h1 .line1 { display: block; color: white; }
+.hero h1 .line2 {
+  display: block;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: var(--muted);
+  max-width: 580px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+  animation: fadeUp 0.6s ease 0.2s both;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeUp 0.6s ease 0.3s both;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #000;
+  padding: 15px 35px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s;
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 40px rgba(0,255,136,0.35);
+}
+
+.btn-outline {
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  padding: 15px 35px;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s;
+  backdrop-filter: blur(10px);
+}
+.btn-outline:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-3px);
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 70px;
+  padding-top: 50px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  flex-wrap: wrap;
+  animation: fadeUp 0.6s ease 0.4s both;
+}
+
+.stat { text-align: center; }
+.stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(30px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+
+/* ══════════════════════════════
+SECTIONS COMMON
+══════════════════════════════ */
+section { padding: 100px 20px; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+.section-label::before {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 2px;
+  background: var(--primary);
+}
+
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 800;
+  color: white;
+  line-height: 1.1;
+  margin-bottom: 15px;
+}
+
+.section-sub {
+  color: var(--muted);
+  font-size: 1rem;
+  max-width: 520px;
+  line-height: 1.7;
+  margin-bottom: 60px;
+}
+
+/* ══════════════════════════════
+SERVICIOS (ANIMACIONES TECH)
+══════════════════════════════ */
+#servicios { background: var(--bg2); }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.service-card {
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 20px;
+  padding: 40px 35px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Scanline Animation */
+.service-card::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  box-shadow: 0 0 10px var(--primary);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.service-card:hover::after {
+  opacity: 1;
+  animation: scanline 2s linear infinite;
+}
+
+@keyframes scanline {
+  0% { top: -10%; }
+  100% { top: 110%; }
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 20%, var(--primary-dim), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.service-card:hover::before { opacity: 1; }
+
+.service-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--border);
+  box-shadow: 0 25px 50px rgba(0,255,136,0.1);
+}
+
+.card-icon {
+  font-size: 2.2rem;
+  margin-bottom: 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: rgba(0,255,136,0.05);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  animation: pulseTech 3s infinite alternate;
+}
+
+@keyframes pulseTech {
+  0% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.2); }
+  100% { box-shadow: 0 0 15px 2px rgba(0, 255, 136, 0.4); }
+}
+
+.service-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 12px;
+}
+
+.service-card p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.tag {
+  background: var(--primary-dim);
+  color: var(--primary);
+  font-size: 0.72rem;
+  padding: 4px 10px;
+  border-radius: 50px;
+  border: 1px solid var(--border);
+  font-weight: 600;
+}
+
+/* ══════════════════════════════
+PROYECTOS / GALERÍA
+══════════════════════════════ */
+#proyectos { background: var(--bg); }
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+
+.project-card {
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+.project-card:nth-child(1) { grid-column: span 7; grid-row: span 2; }
+.project-card:nth-child(2) { grid-column: span 5; }
+.project-card:nth-child(3) { grid-column: span 5; }
+.project-card:nth-child(4) { grid-column: span 4; }
+.project-card:nth-child(5) { grid-column: span 4; }
+.project-card:nth-child(6) { grid-column: span 4; }
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  filter: brightness(0.75) saturate(0.9);
+}
+
+.project-card:nth-child(1) .project-img { min-height: 460px; }
+
+.project-card:hover .project-img {
+  transform: scale(1.08);
+  filter: brightness(0.6) saturate(1.1);
+}
+
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 30%, rgba(5,10,14,0.98) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 25px;
+}
+
+.project-category {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+
+.project-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+}
+.project-card:nth-child(1) .project-title { font-size: 1.4rem; }
+
+.project-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(0,255,136,0.15);
+  border: 1px solid var(--border);
+  color: var(--primary);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+}
+
+/* ══════════════════════════════
+NOSOTROS
+══════════════════════════════ */
+#nosotros { background: var(--bg2); }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-visual {
+  position: relative;
+}
+
+.about-img-main {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  height: 480px;
+  filter: brightness(0.8);
+  border: 1px solid rgba(0,255,136,0.1);
+}
+
+.about-img-accent {
+  position: absolute;
+  bottom: -30px;
+  right: -30px;
+  width: 200px;
+  height: 160px;
+  border-radius: 14px;
+  object-fit: cover;
+  border: 3px solid var(--bg2);
+  filter: brightness(0.9);
+}
+
+.about-badge-float {
+  position: absolute;
+  top: 30px;
+  left: -20px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  backdrop-filter: blur(15px);
+}
+.about-badge-float .num {
+  font-family: 'Syne', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+}
+.about-badge-float .label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.about-content .section-sub { margin-bottom: 35px; }
+
+.values-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.value-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.value-icon {
+  width: 42px;
+  height: 42px;
+  background: var(--primary-dim);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.value-item h4 {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 4px;
+}
+.value-item p {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ══════════════════════════════
+CONTACTO
+══════════════════════════════ */
+#contacto {
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+#contacto::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0,255,136,0.05), transparent 70%);
+  pointer-events: none;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.contact-info { padding-top: 10px; }
+
+.contact-item {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  margin-bottom: 30px;
+  padding: 22px;
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+.contact-item:hover {
+  border-color: var(--border);
+  transform: translateX(6px);
+}
+
+.contact-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--primary-dim);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.contact-label {
+  font-size: 0.75rem;
+  color: var(--primary);
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.contact-value { font-size: 1rem; color: white; font-weight: 500; }
+
+.contact-form {
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 24px;
+  padding: 40px;
+  position: relative;
+}
+
+.contact-form::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, var(--primary), transparent, var(--accent));
+  z-index: -1;
+  opacity: 0.3;
+}
+
+.contact-form h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 25px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-group label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 12px 15px;
+  color: white;
+  font-size: 0.9rem;
+  font-family: 'DM Sans', sans-serif;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: rgba(0,255,136,0.04);
+}
+
+.form-group select option { background: #0a1520; }
+.form-group textarea { resize: none; height: 100px; }
+
+.form-submit {
+  width: 100%;
+  background: var(--primary);
+  color: #000;
+  border: none;
+  padding: 15px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 8px;
+  font-family: 'Syne', sans-serif;
+}
+.form-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(0,255,136,0.35);
+}
+
+/* ══════════════════════════════
+FOOTER
+══════════════════════════════ */
+footer {
+  background: #020609;
+  padding: 60px 20px 30px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 50px;
+  margin-bottom: 50px;
+}
+
+.footer-brand p {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin: 15px 0 25px;
+  max-width: 280px;
+}
+
+.footer-col h5 {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 1px;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+}
+
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.88rem;
+  transition: color 0.2s;
+}
+.footer-col ul li a:hover { color: var(--primary); }
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 25px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.footer-bottom p { color: var(--muted); font-size: 0.82rem; }
+
+/* ══════════════════════════════
+WHATSAPP FLOAT
+══════════════════════════════ */
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  box-shadow: 0 5px 25px rgba(37,211,102,0.5);
+  text-decoration: none;
+  animation: wpPulse 2.5s infinite;
+  transition: transform 0.2s;
+}
+.whatsapp-float:hover { transform: scale(1.15); }
+.whatsapp-float svg { width: 28px; height: 28px; fill: white; }
+
+@keyframes wpPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); }
+  70%  { box-shadow: 0 0 0 18px rgba(37,211,102,0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+}
+
+/* ══════════════════════════════
+RESPONSIVE
+══════════════════════════════ */
+@media (max-width: 1024px) {
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  .project-card:nth-child(n) { grid-column: span 1; grid-row: span 1; }
+  .about-grid { grid-template-columns: 1fr; gap: 50px; }
+  .about-img-accent { display: none; }
+  .about-badge-float { left: 20px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .hero h1 { font-size: 2.5rem; }
+  .hero-stats { gap: 25px; }
+  .projects-grid { display: flex; flex-direction: column; }
+  .project-card:nth-child(1) .project-img { min-height: 280px; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 30px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  section { padding: 70px 20px; }
+}
+
+/* ══════════════════════════════
+ANIMACIONES DE ENTRADA (SCROLL)
+══════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#" class="logo">
+      <div class="logo-dot"></div>
+      Secure<span>Tech</span>
+    </a>
+    <ul class="nav-links">
+      <li>
+        <a href="#servicios">
+          Servicios
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M2 4l4 4 4-4"/></svg>
+        </a>
+        <div class="dropdown">
+          <a href="#cctv"><span class="icon">📷</span> CCTV</a>
+          <a href="#acceso"><span class="icon">🔐</span> Control de Acceso</a>
+          <a href="#portones"><span class="icon">🚪</span> Portones Eléctricos</a>
+          <a href="#automatizacion"><span class="icon">⚙️</span> Automatizaciones</a>
+          <a href="#barreras"><span class="icon">🚧</span> Torniquetes y Barreras</a>
+          <a href="#incendio"><span class="icon">🔥</span> Sistemas de Incendio</a>
+        </div>
+      </li>
+      <li>
+        <a href="#proyectos">Proyectos</a>
+      </li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="https://wa.me/56920344770" class="nav-cta" target="_blank">Cotizar Ahora →</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#servicios" class="mobile-link">📷 CCTV</a>
+  <a href="#acceso" class="mobile-link">🔐 Control de Acceso</a>
+  <a href="#portones" class="mobile-link">🚪 Portones Eléctricos</a>
+  <a href="#automatizacion" class="mobile-link">⚙️ Automatizaciones</a>
+  <a href="#barreras" class="mobile-link">🚧 Torniquetes y Barreras</a>
+  <a href="#incendio" class="mobile-link">🔥 Sistemas de Incendio</a>
+  <a href="#proyectos" class="mobile-link">🗂 Proyectos</a>
+  <a href="#nosotros" class="mobile-link">👥 Nosotros</a>
+  <a href="#contacto" class="mobile-link">📍 Contacto</a>
+  <a href="https://wa.me/56920344770" class="mobile-cta" target="_blank">💬 Cotizar por WhatsApp</a>
+</div>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="badge-dot"></div>
+      Instalación y mantención en todo Chile
+    </div>
+    <h1>
+      <span class="line1">Protección Inteligente</span>
+      <span class="line2">Para Tu Espacio</span>
+    </h1>
+    <p>Somos expertos en instalación y mantención de sistemas de seguridad, CCTV, control de acceso, automatizaciones y sistemas de incendio.</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/56920344770" class="btn-primary" target="_blank">💬 Cotiza Gratis</a>
+      <a href="#proyectos" class="btn-outline">Ver Proyectos →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">+85</div>
+        <div class="stat-label">Proyectos Realizados</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Años de Experiencia</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Clientes Satisfechos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servicios">
+  <div class="container">
+    <div class="section-label">Lo que hacemos</div>
+    <h2 class="section-title">Nuestras Especialidades</h2>
+    <p class="section-sub">Soluciones de instalación y mantención integral para brindar la mayor seguridad y automatización a tus espacios.</p>
+    <div class="services-grid">
+      <div class="service-card reveal" id="cctv">
+        <span class="card-icon">📷</span>
+        <h3>CCTV</h3>
+        <p>Instalación y mantención preventiva de circuitos cerrados de televisión. Cámaras analíticas, visión nocturna y monitoreo mediante app.</p>
+        <div class="card-tags">
+          <span class="tag">Instalación</span><span class="tag">Mantención</span><span class="tag">Monitoreo</span>
+        </div>
+      </div>
+      <div class="service-card reveal" id="acceso">
+        <span class="card-icon">🔐</span>
+        <h3>Control de Acceso</h3>
+        <p>Instalación y mantención de sistemas biométricos, reconocimiento facial, huella digital y lectura de tarjetas magnéticas para accesos seguros.</p>
+        <div class="card-tags">
+          <span class="tag">Instalación</span><span class="tag">Mantención</span><span class="tag">Biometría</span>
+        </div>
+      </div>
+      <div class="service-card reveal" id="portones">
+        <span class="card-icon">🚪</span>
+        <h3>Portones Eléctricos</h3>
+        <p>Instalación y mantención de motores para portones correderas, batientes o seccionales. Diagnóstico de fallas y configuración de controles.</p>
+        <div class="card-tags">
+          <span class="tag">Instalación</span><span class="tag">Mantención</span><span class="tag">Motores</span>
+        </div>
+      </div>
+      <div class="service-card reveal" id="automatizacion">
+        <span class="card-icon">⚙️</span>
+        <h3>Automatizaciones</h3>
+        <p>Instalación y mantención de sistemas de domótica inteligente para espacios corporativos o residenciales. Control unificado desde tu teléfono.</p>
+        <div class="card-tags">
+          <span class="tag">Instalación</span><span class="tag">Mantención</span><span class="tag">Domótica</span>
+        </div>
+      </div>
+      <div class="service-card reveal" id="barreras">
+        <span class="card-icon">🚧</span>
+        <h3>Torniquetes y Barreras</h3>
+        <p>Instalación y mantención mecánica/eléctrica de barreras vehiculares de alto flujo y torniquetes peatonales de seguridad.</p>
+        <div class="card-tags">
+          <span class="tag">Instalación</span><span class="tag">Mantención</span><span class="tag">Alto Flujo</span>
+        </div>
+      </div>
+      <div class="service-card reveal" id="incendio">
+        <span class="card-icon">🔥</span>
+        <h3>Sistemas de Incendio</h3>
+        <p>Instalación y mantención de centrales de alarma, sensores de humo y palancas de emergencia, cumpliendo normativas vigentes.</p>
+        <div class="card-tags">
+          <span class="tag">Instalación</span><span class="tag">Mantención</span><span class="tag">Sensores</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proyectos">
+  <div class="container">
+    <div class="section-label">Casos de éxito</div>
+    <h2 class="section-title">Nuestros Trabajos</h2>
+    <p class="section-sub">Conoce parte de las instalaciones y mantenciones realizadas en terreno, demostrando nuestro compromiso y calidad técnica.</p>
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=900&auto=format&fit=crop" alt="CCTV instalación industrial" class="project-img">
+        <div class="project-overlay">
+          <div class="project-category">CCTV · Instalación</div>
+          <div class="project-title">Sistema integral de videovigilancia monitoreada</div>
+        </div>
+        <div class="project-badge">✓ Entregado</div>
+      </div>
+      <div class="project-card reveal">
+        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=700&auto=format&fit=crop" alt="Control de acceso biométrico" class="project-img">
+        <div class="project-overlay">
+          <div class="project-category">Control de Acceso</div>
+          <div class="project-title">Biometría y control para oficinas</div>
+        </div>
+        <div class="project-badge">✓ Entregado</div>
+      </div>
+      <div class="project-card reveal">
+        <img src="https://images.unsplash.com/photo-1621245036125-9f5b6107a750?w=700&auto=format&fit=crop" alt="Automatización y portones" class="project-img">
+        <div class="project-overlay">
+          <div class="project-category">Automatización</div>
+          <div class="project-title">Portones y acceso vehicular automatizado</div>
+        </div>
+        <div class="project-badge">✓ Entregado</div>
+      </div>
+      <div class="project-card reveal">
+        <img src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=600&auto=format&fit=crop" alt="Sala de servidores domotica" class="project-img">
+        <div class="project-overlay">
+          <div class="project-category">Automatizaciones</div>
+          <div class="project-title">Domótica y rack de integración inteligente</div>
+        </div>
+        <div class="project-badge">✓ Entregado</div>
+      </div>
+      <div class="project-card reveal">
+        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=600&auto=format&fit=crop" alt="Torniquetes corporativos" class="project-img">
+        <div class="project-overlay">
+          <div class="project-category">Torniquetes</div>
+          <div class="project-title">Barreras de acceso peatonal edificio central</div>
+        </div>
+        <div class="project-badge">✓ Entregado</div>
+      </div>
+      <div class="project-card reveal">
+        <img src="https://images.unsplash.com/photo-1413882353314-73389f63b6fd?w=600&auto=format&fit=crop" alt="Alarma y detección incendio" class="project-img">
+        <div class="project-overlay">
+          <div class="project-category">Sistemas de Incendio</div>
+          <div class="project-title">Instalación red de sensores de humo y alarmas</div>
+        </div>
+        <div class="project-badge">✓ Entregado</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="nosotros">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=700&auto=format&fit=crop" alt="Equipo SecureTech en terreno" class="about-img-main">
+        <div class="about-badge-float">
+          <div class="num">5+</div>
+          <div class="label">Años de<br>experiencia</div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1590267071716-12f6e2f2ef56?w=400&auto=format&fit=crop" alt="Técnico instalando sistema" class="about-img-accent">
+      </div>
+      <div class="about-content reveal">
+        <div class="section-label">Quiénes somos</div>
+        <h2 class="section-title">Expertos en Seguridad Técnica Avanzada</h2>
+        <p class="section-sub">
+          SecureTech Chile se enfoca en llevar la mejor tecnología de seguridad y automatización a empresas, industrias y hogares. Contamos con un equipo calificado que ha completado exitosamente más de 85 proyectos y mantenimientos, garantizando siempre la operatividad de los sistemas.
+        </p>
+        <p class="section-sub" style="margin-top:-35px;">
+          Trabajamos con las mejores marcas del mercado en biometría, videovigilancia y motores automatizados, asegurando calidad en cada instalación.
+        </p>
+        <div class="values-list">
+          <div class="value-item">
+            <div class="value-icon">🎯</div>
+            <div>
+              <h4>Ingeniería a tu medida</h4>
+              <p>Cada proyecto es único. Evaluamos el espacio y diseñamos una solución de seguridad o automatización que se ajuste a lo que necesitas.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">🛠️</div>
+            <div>
+              <h4>Instalación y Mantención</h4>
+              <p>No solo dejamos todo funcionando, ofrecemos planes de mantención preventiva para alargar la vida útil de tus equipos e instalaciones.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">⚡</div>
+            <div>
+              <h4>Compromiso Técnico</h4>
+              <p>Nos dedicamos a trabajar de forma prolija, con cables ordenados, certificaciones y configuraciones listas para usar de inmediato.</p>
+            </div>
+          </div>
+        </div>
+        <a href="#contacto" class="btn-primary">Cotiza tu proyecto →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-label">Contáctanos</div>
+        <h2 class="section-title">Hagamos tu proyecto realidad</h2>
+        <p style="color:var(--muted); line-height:1.7; margin-bottom:35px;">
+          Solicita una evaluación técnica o cotización sin compromiso. Estamos listos para mejorar la seguridad de tus espacios.
+        </p>
+        <a href="https://wa.me/56920344770" class="contact-item reveal" target="_blank">
+          <div class="contact-icon">💬</div>
+          <div>
+            <div class="contact-label">WhatsApp</div>
+            <div class="contact-value">+56 9 2034 4770</div>
+          </div>
+        </a>
+        <a href="tel:+56920344770" class="contact-item reveal">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-label">Llamada Directa</div>
+            <div class="contact-value">+56 9 2034 4770</div>
+          </div>
+        </a>
+        <a href="mailto:alvarocofre4@gmail.com" class="contact-item reveal">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-label">Correo Electrónico</div>
+            <div class="contact-value">alvarocofre4@gmail.com</div>
+          </div>
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Pasaje+Diguillín+2903,+Puente+Alto" target="_blank" class="contact-item reveal">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Ubicación</div>
+            <div class="contact-value">Pasaje Diguillín 2903, Puente Alto</div>
+          </div>
+        </a>
+      </div>
+      
+      <form action="mailto:alvarocofre4@gmail.com" method="post" enctype="text/plain" class="contact-form reveal">
+        <h3>Solicitar Cotización</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" name="Nombre" placeholder="Tu nombre" required>
+          </div>
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="tel" name="Telefono" placeholder="+56 9 XXXX XXXX" required>
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom:14px;">
+          <label>Email</label>
+          <input type="email" name="Correo" placeholder="tu@email.com" required>
+        </div>
+        <div class="form-group" style="margin-bottom:14px;">
+          <label>Tipo de servicio</label>
+          <select name="Servicio_Solicitado" required>
+            <option value="" disabled selected>Selecciona un servicio...</option>
+            <option value="CCTV">CCTV (Instalación/Mantención)</option>
+            <option value="Control_Acceso">Control de Acceso (Instalación/Mantención)</option>
+            <option value="Portones">Portones Eléctricos (Instalación/Mantención)</option>
+            <option value="Automatizaciones">Automatizaciones (Instalación/Mantención)</option>
+            <option value="Torniquetes_Barreras">Torniquetes y Barreras (Instalación/Mantención)</option>
+            <option value="Incendio">Sistemas de Incendio (Instalación/Mantención)</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-bottom:14px;">
+          <label>Cuéntanos tu proyecto</label>
+          <textarea name="Detalles_Proyecto" placeholder="Describe brevemente lo que necesitas..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">
+          Enviar Solicitud →
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo" style="margin-bottom:0">
+        <div class="logo-dot"></div>
+        Secure<span>Tech</span>
+      </div>
+      <p>Especialistas en instalación y mantención de sistemas de seguridad, automatización y control para tu tranquilidad.</p>
+      <div style="display:flex; gap:12px;">
+        <a href="https://wa.me/56920344770" style="width:36px;height:36px;background:rgba(255,255,255,0.07);border-radius:8px;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1rem;">💬</a>
+        <a href="mailto:alvarocofre4@gmail.com" style="width:36px;height:36px;background:rgba(255,255,255,0.07);border-radius:8px;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1rem;">✉️</a>
+        <a href="tel:+56920344770" style="width:36px;height:36px;background:rgba(255,255,255,0.07);border-radius:8px;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1rem;">📞</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Servicios</h5>
+      <ul>
+        <li><a href="#cctv">CCTV</a></li>
+        <li><a href="#acceso">Control de Acceso</a></li>
+        <li><a href="#portones">Portones Eléctricos</a></li>
+        <li><a href="#automatizacion">Automatizaciones</a></li>
+        <li><a href="#barreras">Torniquetes y Barreras</a></li>
+        <li><a href="#incendio">Sistemas de Incendio</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Empresa</h5>
+      <ul>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contacto</h5>
+      <ul>
+        <li><a href="tel:+56920344770">+56 9 2034 4770</a></li>
+        <li><a href="mailto:alvarocofre4@gmail.com">alvarocofre4@gmail.com</a></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Pasaje+Diguillín+2903,+Puente+Alto" target="_blank">Pasaje Diguillín 2903, Puente Alto</a></li>
+        <li><a href="#">Lun–Vie 8:30–18:30</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 SecureTech Chile. Todos los derechos reservados.</p>
+    <p style="color:var(--muted);">Soluciones Tecnológicas Integrales</p>
+  </div>
+</footer>
+
+<a href="https://wa.me/56920344770" class="whatsapp-float" target="_blank" title="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+
+  document.querySelectorAll('.mobile-link, .mobile-cta').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
+  });
+
+  // Active nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links > li > a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      if (window.scrollY >= section.offsetTop - 100) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+  });
+
+  // Scroll reveal - Versión segura
+  document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      observer.observe(el);
+    });
+  });
+</script>
+
+</body>
+</html>
