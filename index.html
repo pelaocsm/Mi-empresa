@@ -88,7 +88,11 @@ nav {
   width: auto;
   object-fit: contain;
 }
-.logo span { color: white; }
+.logo span {
+  background: var(--gold-metal);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .logo-dot {
   width: 8px; height: 8px;
   background: var(--primary);
