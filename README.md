@@ -1,2 +1,0 @@
-# Mi-empresa
-Prueba
